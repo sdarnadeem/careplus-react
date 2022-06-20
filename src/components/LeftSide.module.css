@@ -1,7 +1,11 @@
 .activeTab {
-  color: green;
+  color: blue;
 }
 
-.link {
+.link,
+.link:hover,
+.link:focus,
+.link:active {
   text-decoration: none;
+  color: inherit;
 }
