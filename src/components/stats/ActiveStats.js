@@ -20,7 +20,7 @@ const ActiveStats = ({ count, headline, text }) => {
             sx={{ paddingBottom: "30px" }}
           >
             <Grid item>
-              <Typography variant="body1">Statistics</Typography>
+              <Typography variant="h6">Statistics</Typography>
             </Grid>
             <Grid item>
               <Typography variant="caption">This month</Typography>
@@ -28,9 +28,9 @@ const ActiveStats = ({ count, headline, text }) => {
           </Grid>
           <Grid
             container
-            justifyContent="space-between"
+            justifyContent="space-evenly"
             spacing={5}
-            columnSpacing={10}
+            columnSpacing={20}
           >
             <Grid item>
               <Stack direction="row" alignItems="center" spacing={2}>
