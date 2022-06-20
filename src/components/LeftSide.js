@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 import content from "./leftSideContent";
 import c from "./LeftSide.module.css";
-import { Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 
 const LeftSide = () => {
   const [searchParams] = useSearchParams();
@@ -36,13 +36,15 @@ const LeftSide = () => {
   };
 
   const renderItem = (id, Icon, text, slug) => {
+    const tabClass = `${activeTab === slug && c.activeTab} ${c.tab}`;
     return (
       <Stack
-        className={activeTab === slug && c.activeTab}
+        className={tabClass}
         direction="row"
         alignItems="center"
         spacing={1}
         key={id}
+        sx={{ margin: "0 !important", padding: "10px" }}
       >
         <Icon />
         {logout(slug, text)}
@@ -55,13 +57,40 @@ const LeftSide = () => {
     );
   };
   return (
-    <Stack
-      style={{ padding: "10px" }}
-      spacing={2}
-      divider={<Divider orientation="horizontal" flexItem />}
-    >
-      {content.map((item, i) => renderItem(i, item.icon, item.text, item.slug))}
-    </Stack>
+    <Grid container>
+      <Grid
+        sx={{
+          height: "100px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+        item
+      >
+        <img
+          src="https://st3.depositphotos.com/16262510/33731/v/1600/depositphotos_337310436-stock-illustration-demo-vector-icon-isolated-on.jpg"
+          alt="logo"
+          style={{ width: "70px", height: "70px" }}
+        />
+      </Grid>
+      <Grid item>
+        <Stack
+          style={{ padding: "10px" }}
+          spacing={2}
+          divider={
+            <Divider
+              orientation="horizontal"
+              flexItem
+              sx={{ marginTop: "0px !important" }}
+            />
+          }
+        >
+          {content.map((item, i) =>
+            renderItem(i, item.icon, item.text, item.slug)
+          )}
+        </Stack>
+      </Grid>
+    </Grid>
   );
 };
 

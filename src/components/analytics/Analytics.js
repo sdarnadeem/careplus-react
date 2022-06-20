@@ -4,12 +4,27 @@ import { useNavigate } from "react-router-dom";
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import { Box, Tabs, Tab, Button } from "@mui/material";
+import {
+  Box,
+  Tabs,
+  Tab,
+  Button,
+  Grid,
+  Typography,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  Divider,
+} from "@mui/material";
 
 import data from "./analyticsContent";
 import Dialog from "../dialog/Dialog";
+import ActiveStats from "../stats/ActiveStats";
 
 const Analytics = () => {
+  const [filter, setFilter] = React.useState("Today");
+
   const [value, setValue] = React.useState(0);
   const navigate = useNavigate();
   const [selected, setSelected] = useState();
@@ -31,6 +46,11 @@ const Analytics = () => {
     }),
     []
   );
+
+  const handleFilterChange = (event) => {
+    setFilter(event.target.value);
+  };
+
   const handleCloseDialog = () => {
     setOpenDialog(false);
   };
@@ -86,6 +106,22 @@ const Analytics = () => {
 
   return (
     <>
+      <Grid container justifyContent="space-between" width="100% !important">
+        <Grid item>
+          <Typography variant="h4">Welcome to CarePlus Dashboard</Typography>
+          <Divider />
+        </Grid>
+      </Grid>
+      <Grid container columnSpacing="40">
+        <Grid item>
+          <ActiveStats
+            count={24}
+            text={`This ${filter}`}
+            percentage="20"
+            headline="Total Clinics"
+          />
+        </Grid>
+      </Grid>
       <Box sx={{ width: "100%", bgcolor: "background.paper" }}>
         <Tabs value={value} onChange={handleChange}>
           <Tab label="Active Clinic" />
