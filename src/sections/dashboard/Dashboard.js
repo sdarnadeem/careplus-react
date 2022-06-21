@@ -9,7 +9,7 @@ import RightSide from "../../components/RightSide";
 const Dashboard = () => {
   return (
     <>
-      <Grid container spacing={5} padding={3}>
+      <Grid container spacing={2} padding={3}>
         <Grid item xs={2}>
           <LeftSide />
         </Grid>
