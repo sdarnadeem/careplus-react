@@ -1,7 +1,7 @@
 import React, { useState, useRef, useMemo, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { AgGridReact } from "ag-grid-react";
+// import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import {
@@ -17,10 +17,31 @@ import {
   MenuItem,
   Divider,
 } from "@mui/material";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import { Line } from "react-chartjs-2";
 
-import data from "./analyticsContent";
-import Dialog from "../dialog/Dialog";
+import { options, optionsData } from "./analyticsContent";
+// import Dialog from "../dialog/Dialog";
 import ActiveStats from "../stats/ActiveStats";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 const Analytics = () => {
   const [filter, setFilter] = React.useState("Today");
@@ -106,10 +127,13 @@ const Analytics = () => {
 
   return (
     <>
-      <Grid container justifyContent="space-between" width="100% !important">
-        <Grid item>
+      <Grid container direction="column" width="100% !important" spacing={3}>
+        <Grid item style={{ marginTop: "20px" }}>
           <Typography variant="h4">Welcome to CarePlus Dashboard</Typography>
           <Divider />
+        </Grid>
+        <Grid item>
+          <Typography variant="h6">Analytics</Typography>
         </Grid>
       </Grid>
       <Grid container columnSpacing="40">
@@ -122,7 +146,18 @@ const Analytics = () => {
           />
         </Grid>
       </Grid>
-      <Box sx={{ width: "100%", bgcolor: "background.paper" }}>
+      <Grid container>
+        <Grid item>
+          <Typography variant="h6">Daily Sales Overview</Typography>
+        </Grid>
+        <Grid item sx={{ width: "100%", bgcolor: "background.paper" }}>
+          <Box sx={{ width: "100%", bgcolor: "background.paper" }}>
+            <Line options={options} data={optionsData} />
+          </Box>
+        </Grid>
+      </Grid>
+
+      {/* <Box sx={{ width: "100%", bgcolor: "background.paper" }}>
         <Tabs value={value} onChange={handleChange}>
           <Tab label="Active Clinic" />
           <Tab label="Active Doctor" />
@@ -167,7 +202,7 @@ const Analytics = () => {
           yesFun={dialogDetails.yesFun}
           noFun={dialogDetails.noFun}
         />
-      )}
+      )}*/}
     </>
   );
 };
