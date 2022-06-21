@@ -1,5 +1,6 @@
 import React from "react";
 import { Grid, Button, Typography, Stack, Avatar, Paper } from "@mui/material";
+import NewPatient from "../newPatient/NewPatient";
 
 const SinglePatient = ({
   src,
@@ -26,10 +27,18 @@ const SinglePatient = ({
 };
 
 const Patient = () => {
+  const [open, setOpen] = React.useState(false);
+  const handleAddNew = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   return (
     <>
       <Grid container justifyContent="end">
-        <Button variant="contained" size="small">
+        <Button variant="contained" size="small" onClick={handleAddNew}>
           Add New
         </Button>
       </Grid>
@@ -60,6 +69,7 @@ const Patient = () => {
           />
         </Grid>
       </Grid>
+      <NewPatient open={open} handleClose={handleClose} />
     </>
   );
 };
