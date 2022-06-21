@@ -10,9 +10,10 @@ import Commission from "./commission/Commission";
 import AdminProfile from "./adminProfile/AdminProfile.js";
 
 import { Stack } from "@mui/material";
-import TextField from "@mui/material/TextField";
-import InputAdornment from "@mui/material/InputAdornment";
-import SearchIcon from "@mui/icons-material/Search";
+import Patient from "./patient/Patient.js";
+// import TextField from "@mui/material/TextField";
+// import InputAdornment from "@mui/material/InputAdornment";
+// import SearchIcon from "@mui/icons-material/Search";
 
 const MiddleSide = () => {
   const [searchParams] = useSearchParams();
@@ -22,6 +23,8 @@ const MiddleSide = () => {
     switch (tab) {
       case "doctors":
         return <Doctors />;
+      case "patient":
+        return <Patient />;
       case "clinics":
         return <Clinics />;
       case "fees":

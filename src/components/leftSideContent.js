@@ -1,11 +1,9 @@
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import BiotechIcon from "@mui/icons-material/Biotech";
-import AnalyticsIcon from "@mui/icons-material/Analytics";
 import GroupIcon from "@mui/icons-material/Group";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import PaymentIcon from "@mui/icons-material/Payment";
 import CoPresentIcon from "@mui/icons-material/CoPresent";
-import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
 import BookIcon from "@mui/icons-material/Book";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import LogoutIcon from "@mui/icons-material/Logout";
@@ -15,6 +13,11 @@ const content = [
     icon: DashboardIcon,
     text: "Dashboard",
     slug: "dashboard",
+  },
+  {
+    icon: BookIcon,
+    text: "Patient",
+    slug: "patient",
   },
   {
     icon: BiotechIcon,
