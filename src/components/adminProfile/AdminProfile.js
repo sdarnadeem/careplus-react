@@ -1,8 +1,19 @@
 import React from "react";
 
-import { Grid, Button, Typography, Divider, Avatar } from "@mui/material";
+import {
+  Grid,
+  Button,
+  Typography,
+  Divider,
+  Avatar,
+  TextField,
+} from "@mui/material";
 
 const AdminProfile = () => {
+  const [showPassword, setShowPassword] = React.useState(false);
+  const handlePassword = () => {
+    setShowPassword((prev) => !prev);
+  };
   return (
     <>
       <Grid container spacing={2} justifyContent="flex-end">
@@ -11,37 +22,52 @@ const AdminProfile = () => {
             Admin Profile
           </Typography>
         </Grid>
-        <Grid item height="100%" alignItems="center">
-          <Button variant="outlined" size="small">
-            Update Admin
-          </Button>
-        </Grid>
-        <Grid item height="100%" alignItems="center">
-          <Button variant="outlined" size="small">
-            Update Password
-          </Button>
-        </Grid>
       </Grid>
       <Divider />
-      <Grid container>
+      <Grid container direction="column">
         <Grid item>
-          <Avatar
-            alt="Remy Sharp"
-            src="https://images.unsplash.com/photo-1644982647869-e1337f992828?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxzZWFyY2h8MXx8d29tYW58ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
-            sx={{ width: 100, height: 100, marginRight: "20px" }}
+          <TextField
+            margin="dense"
+            id="old"
+            label="Old Password"
+            type={showPassword ? "text" : "password"}
+            max="100"
+            min="1"
+            variant="standard"
+            style={{ marginRight: "20px" }}
+            inputRef={""}
           />
         </Grid>
-        <Grid>
-          <Grid item container>
-            <Typography variant="h4" component="h6">
-              Remy Sharp
-            </Typography>
-          </Grid>
-          <Grid item>
-            <Typography variant="body2" component="p">
-              CEO
-            </Typography>
-          </Grid>
+        <Grid item>
+          <TextField
+            margin="dense"
+            id="new"
+            label="New Password"
+            type={showPassword ? "text" : "password"}
+            max="100"
+            min="1"
+            variant="standard"
+            style={{ marginRight: "20px" }}
+            inputRef={""}
+          />
+        </Grid>
+        <Grid item>
+          <TextField
+            margin="dense"
+            id="new"
+            label="Confirm New Password"
+            type={showPassword ? "text" : "password"}
+            max="100"
+            min="1"
+            variant="standard"
+            style={{ marginBottom: "20px" }}
+            inputRef={""}
+          />
+        </Grid>
+        <Grid item>
+          <Button variant="contained" onClick={handlePassword}>
+            Submit
+          </Button>
         </Grid>
       </Grid>
     </>
