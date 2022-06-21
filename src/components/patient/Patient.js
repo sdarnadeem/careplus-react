@@ -24,21 +24,6 @@ const SinglePatient = ({
     </Paper>
   );
 };
-const Header = () => {
-  return (
-    <Paper elevation={1} width="100%" style={{ padding: "8px" }}>
-      <Stack direction="row" alignItems="center" spacing={4}>
-        <Typography variant="body1">Profile Pic</Typography>
-        <Typography variant="body1">Name</Typography>
-        <Typography variant="body1">Age</Typography>
-        <Typography variant="body1">Address</Typography>
-        <Typography variant="body1">Phone</Typography>
-        <Typography variant="body1">Registration</Typography>
-        <Typography variant="body1">Last Appointment</Typography>
-      </Stack>
-    </Paper>
-  );
-};
 
 const Patient = () => {
   return (
