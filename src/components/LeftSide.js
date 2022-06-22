@@ -7,11 +7,15 @@ import { Link } from "react-router-dom";
 import content from "./leftSideContent";
 import c from "./LeftSide.module.css";
 import { Grid, Typography } from "@mui/material";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const LeftSide = () => {
   const [searchParams] = useSearchParams();
   const tab = searchParams.get("tab");
   const navigate = useNavigate();
+
+  const matches = useMediaQuery("(max-width:600px)");
+  console.log(matches);
 
   const activeTab = tab === undefined ? "dashboard" : tab;
 
@@ -26,6 +30,7 @@ const LeftSide = () => {
           sx={{ cursor: "pointer" }}
           onClick={handleLogout}
           variant="body"
+          class={c.logout}
         >
           {text}
         </Typography>
@@ -46,7 +51,10 @@ const LeftSide = () => {
         key={id}
         sx={{ margin: "0 !important", padding: "10px" }}
       >
-        <Icon />
+        <Link className={c.icon} to={`?tab=${slug}`}>
+          <Icon />
+        </Link>
+
         {logout(slug, text)}
         {slug !== "logout" && (
           <Link className={c.link} to={`?tab=${slug}`}>
